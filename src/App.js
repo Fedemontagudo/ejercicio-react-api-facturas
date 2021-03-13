@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
+import BuscaFacturas from "./Components/Buscador";
 import useFetch from "./Hooks/useFetch";
 
 function App() {
@@ -16,7 +17,11 @@ function App() {
             <h2>Listado de facturas</h2>
           </Col>
         </Row>
+        <main>
+          <BuscaFacturas></BuscaFacturas>
+        </main>
       </Container>
+
     </>
   );
 }
