@@ -4,11 +4,15 @@ import BuscaFacturas from "./Components/Buscador";
 import useFetch from "./Hooks/useFetch";
 
 function App() {
-  const { datos, cargando } = useFetch(`${process.env.REACT_APP_API_URL}`);
-  const [total, setTotal] = useState(0);
+  const [facturas, setFacturas] = useState([]);
+  const { datos: facturasApi } = useFetch(`${process.env.REACT_APP_API_URL}`);
+
   useEffect(() => {
-    console.log(datos);
-  }, [datos]);
+    if (facturasApi) {
+      setFacturas(facturasApi.filter(facturaAPI => facturaAPI.tipo === "ingreso"));
+    }
+  }, [facturasApi]);
+
   return (
     <>
       <Container as="section" fluid className="principal">
