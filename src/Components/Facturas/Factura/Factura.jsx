@@ -15,10 +15,11 @@ const Factura = (props) => {
         <td>{`${(base * (1 + tipoIva) / 100) + base} €`}</td>
         <td className={abonada ? "table-success" : "table-danger"}>{abonada ? "abonada" : "pendiente"}</td>
         <td>
-          {`${DateTime.fromMillis(parseInt(vencimiento)).setLocale("es").toLocaleString()}
+          {!abonada ? `${DateTime.fromMillis(parseInt(vencimiento)).setLocale("es").toLocaleString()}
           faltan ${DateTime.now().diff(DateTime.fromMillis(parseInt(vencimiento)), "days")}
           ${DateTime.now().setLocale("es").toLocaleString()}
           `
+            : ""
           }
 
         </td>
