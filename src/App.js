@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import useFetch from "./Hooks/useFetch";
 
 function App() {
@@ -9,7 +10,13 @@ function App() {
   }, [datos]);
   return (
     <>
-      <h1>resultados </h1>
+      <Container as="section" fluid className="principal">
+        <Row as="header" className="cabecera">
+          <Col>
+            <h2>Listado de facturas</h2>
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 }
