@@ -1,15 +1,12 @@
-import { Row, Col, Form } from "react-bootstrap";
-
 const BuscaFacturas = () => {
   return (
-    <Row>
-      <Col className="info-listado info-listado-top text-right">
-        <Form.Label>
-          Buscar
-            <Form.Control type="text" placeholder="Num de factura" />
-        </Form.Label>
-      </Col>
-    </Row>
+     <div class="row">
+        <div class="info-listado info-listado-top col text-right">
+          <label>
+            Buscar</label>
+            <input type="text" class="form-control form-control-sm" />
+        </div>
+      </div>
   );
 };
 
