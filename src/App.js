@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import BuscaFacturas from "./Components/Buscador";
 import useFetch from "./hooks/useFetch";
 import Facturas from "./Components/Facturas/Facturas";
-import Total from "./Components/Facturas/Factura/Total";
 
 function App() {
   const [facturas, setFacturas] = useState([]);
@@ -33,7 +32,7 @@ function App() {
         </header>
         <main>
           <BuscaFacturas />
-          <Facturas facturas={facturas} cargando={cargando} />
+          <Facturas totalAbsoluto={totalAbsoluto} baseTotal={baseTotal} ivaTotal={ivaTotal} facturas={facturas} cargando={cargando} />
         </main>
 
       </section>
