@@ -3,7 +3,6 @@ import Factura from "./Factura/Factura";
 
 const Facturas = (props) => {
   const { facturas, cargando } = props;
-  console.log(facturas);
   return (
     <>
       <table className="listado table table-striped table-bordered table-hover">
