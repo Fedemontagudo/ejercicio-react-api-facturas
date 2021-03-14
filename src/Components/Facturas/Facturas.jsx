@@ -3,9 +3,10 @@ import { facturaType } from "../../types/facturaType";
 import React from "react";
 import Factura from "./Factura/Factura";
 import Totales from "./Totales";
+import ClipLoader from "react-spinners/ClipLoader";
 
 const Facturas = (props) => {
-  const { facturas } = props;
+  const { facturas, cargando } = props;
   return (
     <>
       <table className="listado table table-striped table-bordered table-hover">
@@ -26,6 +27,7 @@ const Facturas = (props) => {
         </tbody>
         <Totales baseTotal={props.baseTotal} ivaTotal={props.ivaTotal} totalAbsoluto={props.totalAbsoluto} />
       </table>
+      <ClipLoader color={"red"} loading={cargando} size={150} /> :
     </>
   );
 };
