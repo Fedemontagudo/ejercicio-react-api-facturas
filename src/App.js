@@ -24,11 +24,9 @@ function App() {
   };
 
   useEffect(() => {
-    if (facturasFiltradas.length > 0) {
-      setBaseTotal(facturasFiltradas.map(factura => factura.base).reduce((acc, base) => acc + base));
-      setIvaTotal(facturasFiltradas.map(factura => factura.base * (factura.tipoIva / 100)).reduce((acc, iva) => acc + iva));
-      setTotalAbsoluto(Math.round(facturasFiltradas.map(factura => factura.base + factura.base * (factura.tipoIva / 100)).reduce((acc, total) => acc + total) * 100) / 100);
-    }
+      setBaseTotal(facturasFiltradas.map(factura => factura.base).reduce((acc, base) => acc + base , 0));
+      setIvaTotal(facturasFiltradas.map(factura => factura.base * (factura.tipoIva / 100)).reduce((acc, iva) => acc + iva , 0));
+      setTotalAbsoluto(Math.round(facturasFiltradas.map(factura => factura.base + factura.base * (factura.tipoIva / 100)).reduce((acc, total) => acc + total, 0) * 100) / 100);
   }, [facturasFiltradas]);
 
   return (
