@@ -1,5 +1,6 @@
 import React from "react";
 import Factura from "./Factura/Factura";
+import Total from ".Factura/Total";
 
 const Facturas = (props) => {
   const { facturas, cargando } = props;
@@ -21,6 +22,7 @@ const Facturas = (props) => {
         <tbody>
           {facturas.map(factura => <Factura factura={factura} key={factura.id} />)}
         </tbody>
+        <Total baseTotal={baseTotal} ivaTotal={ivaTotal} TotalTotal={totalAbsoluto} />
       </table>
     </>
   );
