@@ -32,8 +32,8 @@ const Factura = (props) => {
         <td>{DateTime.fromMillis(parseInt(fecha)).setLocale("es").toLocaleString()}</td>
         <td>{concepto}</td>
         <td>{base} €</td>
-        <td>{`${base * (1 + tipoIva) / 100} €`}</td>
-        <td>{`${(base * (1 + tipoIva) / 100) + base} € (${tipoIva}%)`}</td>
+        <td>{`${base * tipoIva / 100} €`}</td>
+        <td>{`${(base * tipoIva / 100) + base} € (${tipoIva}%)`}</td>
         <td className={abonada ? "table-success" : "table-danger"}>{abonada ? "abonada" : "pendiente"}</td>
         <td className={diasDiff() >= 0 || abonada ? "table-success" : "table-danger"}>
           {!abonada ? `${compoVencimiento()}` : "-"}

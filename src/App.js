@@ -5,6 +5,7 @@ import Facturas from "./Components/Facturas/Facturas";
 
 function App() {
   const [facturas, setFacturas] = useState([]);
+  const [facturasFiltradas, setFacturasFiltradas] = useState([]);
   const { datos: facturasApi, cargando } = useFetch(`${process.env.REACT_APP_API_URL}`);
   const [baseTotal, setBaseTotal] = useState(0);
   const [ivaTotal, setIvaTotal] = useState(0);
@@ -12,17 +13,23 @@ function App() {
 
   useEffect(() => {
     if (facturasApi) {
-      setFacturas(facturasApi.filter(facturaAPI => facturaAPI.tipo === "ingreso"));
+      const datosFactura = facturasApi.filter(facturaAPI => facturaAPI.tipo === "ingreso");
+      setFacturas(datosFactura);
+      setFacturasFiltradas(datosFactura);
     }
   }, [facturasApi]);
 
+  const buscarNum = (numBusqueda) => {
+    setFacturasFiltradas(facturas.filter(factura => factura.numero.includes(numBusqueda)));
+  };
+
   useEffect(() => {
-    if (facturas.length > 0) {
-      setBaseTotal(facturas.map(factura => factura.base).reduce((acc, base) => acc + base));
-      setIvaTotal(facturas.map(factura => factura.base * (factura.tipoIva / 100)).reduce((acc, iva) => acc + iva));
-      setTotalAbsoluto(Math.round(facturas.map(factura => factura.base + factura.base * (factura.tipoIva / 100)).reduce((acc, total) => acc + total) * 100) / 100);
+    if (facturasFiltradas.length > 0) {
+      setBaseTotal(facturasFiltradas.map(factura => factura.base).reduce((acc, base) => acc + base));
+      setIvaTotal(facturasFiltradas.map(factura => factura.base * (factura.tipoIva / 100)).reduce((acc, iva) => acc + iva));
+      setTotalAbsoluto(Math.round(facturasFiltradas.map(factura => factura.base + factura.base * (factura.tipoIva / 100)).reduce((acc, total) => acc + total) * 100) / 100);
     }
-  }, [facturas]);
+  }, [facturasFiltradas]);
 
   return (
     <>
@@ -31,8 +38,8 @@ function App() {
           <h2 className="col">Listado de ingresos</h2>
         </header>
         <main>
-          <BuscaFacturas />
-          <Facturas totalAbsoluto={totalAbsoluto} baseTotal={baseTotal} ivaTotal={ivaTotal} facturas={facturas} cargando={cargando} />
+          <BuscaFacturas buscarNumHandler={buscarNum} />
+          <Facturas totalAbsoluto={totalAbsoluto} baseTotal={baseTotal} ivaTotal={ivaTotal} facturas={facturasFiltradas} cargando={cargando} />
         </main>
 
       </section>
