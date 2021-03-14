@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import BuscaFacturas from "./Components/Buscador";
-import useFetch from "./Hooks/useFetch";
+import useFetch from "./hooks/useFetch";
 import Facturas from "./Components/Facturas/Facturas";
 
 function App() {
