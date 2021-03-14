@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+import { facturaType } from "../../../types/facturaType";
 import React from "react";
 import { DateTime } from "luxon";
 
@@ -23,7 +25,6 @@ const Factura = (props) => {
     }
   };
 
-
   return (
     <>
       <tr>
@@ -40,6 +41,10 @@ const Factura = (props) => {
       </tr>
     </>
   );
+};
+
+Factura.propTypes = {
+  factura: PropTypes.shape(facturaType).isRequired,
 };
 
 export default Factura;

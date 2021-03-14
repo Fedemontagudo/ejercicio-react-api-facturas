@@ -1,8 +1,10 @@
+import PropTypes from "prop-types";
+import { facturaType } from "../../types/facturaType";
 import React from "react";
 import Factura from "./Factura/Factura";
 
 const Facturas = (props) => {
-  const { facturas, cargando } = props;
+  const { facturas } = props;
   return (
     <>
       <table className="listado table table-striped table-bordered table-hover">
@@ -24,6 +26,10 @@ const Facturas = (props) => {
       </table>
     </>
   );
+};
+
+Facturas.propTypes = {
+  facturas: PropTypes.arrayOf(PropTypes.shape(facturaType)).isRequired,
 };
 
 export default Facturas;
