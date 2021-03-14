@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { facturaType } from "../../types/facturaType";
 import React from "react";
 import Factura from "./Factura/Factura";
-import Total from ".Factura/Total";
+import Totales from "./Totales";
 
 const Facturas = (props) => {
   const { facturas } = props;
@@ -24,7 +24,7 @@ const Facturas = (props) => {
         <tbody>
           {facturas.map(factura => <Factura factura={factura} key={factura.id} />)}
         </tbody>
-        <Total baseTotal={baseTotal} ivaTotal={ivaTotal} TotalTotal={totalAbsoluto} />
+        <Totales baseTotal={props.baseTotal} ivaTotal={props.ivaTotal} totalAbsoluto={props.totalAbsoluto} />
       </table>
     </>
   );

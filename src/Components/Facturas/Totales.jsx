@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 
-const Total = props => {
+const Totales = props => {
   const { baseTotal, ivaTotal, totalAbsoluto } = props;
   return (
-    <tfoot>
+
+    < tfoot >
       <tr className="totales">
         <th className="text-right" colSpan="3">Totales:</th>
         <td><span className="total-bases"></span>{`${baseTotal} €`}</td>
@@ -11,13 +12,13 @@ const Total = props => {
         <td><span className="total-totales"></span>{`${totalAbsoluto} €`}</td>
         <td colSpan="2"></td>
       </tr>
-    </tfoot>
+    </tfoot >
   );
 };
 
-Total.propTypes = {
+Totales.propTypes = {
   baseTotal: PropTypes.number.isRequired,
   ivaTotal: PropTypes.number.isRequired,
   totalAbsoluto: PropTypes.number.isRequired
 };
-export default Total;
+export default Totales;
